@@ -10,20 +10,17 @@ for filename in os.listdir(folderPath):
             print fullpath
             print"@@@@"
            
-           
             for lyr in arcpy.mapping.ListLayers(mxd):
                 print lyr
-               
-                          
                 #print "#################################
                 if lyr.supports("DATASOURCE"):
                     print lyr.workspacePath 
                     if lyr.workspacePath  == r"pathA.sde":
                         datapath= r"pathB.sde"
                         mxd.replaceWorkspaces(lyr.workspacePath,"SDE_WORKSPACE", datapath,"SDE_WORKSPACE")
-                        print "has been changed to" + datapath
-               
-                    print "done"
+                        print "data source has been changed to" + datapath
+             
+                    #print "done"
             mxd.save()
                 #else:
                     #print"skip"
